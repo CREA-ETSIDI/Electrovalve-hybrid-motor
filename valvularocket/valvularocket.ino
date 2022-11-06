@@ -24,22 +24,21 @@ void setup() {
 void loop () { 
   //botonera();
   tempura();
+  //leer();
   //encendido();
 }
 
 //Opción funcionamiento botonera
 void botonera(void){
-  boolean apertura;
-  boolean cierre;
-  apertura=digitalRead(2);
-  cierre=digitalRead(3);
-  if (apertura && cierre) 
+  boolean rupto;
+  rupto=digitalRead(2);
+  if (rupto) 
 { 
      Serial.println("ESTAMOS OFF");
      digitalWrite (9, LOW); 
      delay(1000); 
 } 
-else if(apertura)
+else
 { 
      Serial.println("ESTAMOS ON");
      digitalWrite (9, HIGH); 
@@ -64,4 +63,10 @@ void encendido(void){
 }
 void input(void){
   
+}
+void leer(void){
+  float lectura=analogRead(A0);
+  lectura=lectura*0.1;
+  Serial.print("Estoy leyendo: ");
+  Serial.println(lectura);
 }
